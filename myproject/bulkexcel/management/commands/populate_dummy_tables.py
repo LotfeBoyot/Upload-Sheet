@@ -9,6 +9,7 @@ import hashlib
 from django.utils.timezone import now
 import time
 import os
+from dotenv import load_dotenv
 from decimal import Decimal
 
 class Command(BaseCommand):
@@ -273,12 +274,12 @@ class Command(BaseCommand):
                 inv_count = InvoicesLog.objects.filter(invoice_short_uuid=invoice_short_uuid).count()
                 if inv_count == 0:
                     break
-
+            load_dotenv()
             invoice_log = InvoicesLog.objects.create(
                     invoice=invoice,
                     invoice_uuid=invoice_uuid,
                     invoice_short_uuid=invoice_short_uuid,
-                    invoice_url=f"{os.environ.get('APP_URL')}{invoice_short_uuid}",
+                    invoice_url=f"{os.getenv('APP_URL')}{invoice_short_uuid}",
                     active=1,
                     bulk_excel_id=row.id,
                     excel_batch_id=row.batch_id
