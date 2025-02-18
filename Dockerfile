@@ -25,4 +25,4 @@ COPY . /app/
 
 # Run migrations and start the server (optional)
 CMD ["python", "manage.py", "migrate"]
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "yourproject.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "myproject.wsgi:application"]

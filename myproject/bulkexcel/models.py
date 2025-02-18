@@ -774,3 +774,16 @@ class EngineTemp(models.Model):
 
     def __str__(self):
         return f"{self.subject_type} - {self.client_name}"
+    
+
+class TriggerUploadSheet(models.Model):
+    id = models.AutoField(primary_key=True)
+    active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        db_table = 'trigger_upload_sheet'
+
+    def __str__(self):
+        return f"TriggerUploadSheet(id={self.id}, active={self.active})"
